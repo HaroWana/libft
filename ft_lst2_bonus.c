@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lst2_bonus.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jlorber <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/15 12:10:14 by jlorber           #+#    #+#             */
+/*   Updated: 2022/03/15 12:16:24 by jlorber          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
@@ -35,11 +47,11 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 int	ft_lstsize(t_list *lst)
 {
 	unsigned int	i;
-	t_list		*temp;
+	t_list			*temp;
 
 	i = 0;
 	if (!lst)
-		return (NULL);
+		return (0);
 	temp = lst;
 	while (temp)
 	{

@@ -13,6 +13,7 @@ FCTS = ft_caib.c \
        ft_put_fd.c 
 
 OBJS = $(FCTS:.c=.o)
+
 BONUS_FCTS = ft_lst_bonus.c \
 	     ft_lst2_bonus.c
 

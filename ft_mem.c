@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_mem.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jlorber <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/15 12:10:22 by jlorber           #+#    #+#             */
+/*   Updated: 2022/03/15 15:39:21 by jlorber          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 void	*ft_memset(void *b, int c, size_t n)
 {
 	unsigned int	i;
-	char		*ptr;
+	char			*ptr;
 
 	ptr = b;
 	i = 0;
@@ -15,8 +27,8 @@ void	*ft_memset(void *b, int c, size_t n)
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	unsigned int	i;
-	char		*s;
-	char		*d;
+	char			*s;
+	char			*d;
 
 	s = (char *)src;
 	d = (char *)dst;
@@ -32,8 +44,8 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 void	*ft_memmove(void *dst, const void *src, size_t n)
 {
 	unsigned int	i;
-	char		*s;
-	char		*d;
+	char			*s;
+	char			*d;
 
 	s = (char *)src;
 	d = (char *)dst;
@@ -66,7 +78,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	i = 0;
 	while (i < n)
 	{
-		if (str[i] == c)
+		if (str[i] == (unsigned char)c)
 			return ((void *)&str[i]);
 		i++;
 	}
@@ -84,8 +96,7 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	i = 0;
 	if (n == 0)
 		return (0);
-	while (i < n && str1[i] == str2[i] && str1[i] != '\0' 
-			&& str2[i] != '\0')
+	while (i < n - 1 && str1[i] == str2[i])
 		i++;
 	return (str1[i] - str2[i]);
 }

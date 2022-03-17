@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_str2.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jlorber <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/15 12:11:00 by jlorber           #+#    #+#             */
+/*   Updated: 2022/03/15 17:27:04 by jlorber          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 int	ft_strlen(const char *s)
@@ -5,7 +17,7 @@ int	ft_strlen(const char *s)
 	int	i;
 
 	i = 0;
-	while (s[i] != '\0')
+	while (*s++)
 		i++;
 	return (i);
 }
@@ -18,12 +30,13 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	i = 0;
 	j = 0;
-	if (!(new = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1))))
+	new = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!new)
 		return (NULL);
 	while (s1[i] != '\0')
 	{
 		new[i] = s1[i];
-		i++; 
+		i++;
 	}
 	while (s2[j] != '\0')
 	{
@@ -38,44 +51,40 @@ char	*ft_strjoin(char const *s1, char const *s2)
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
 	unsigned int	i;
-	unsigned int	j;
 	unsigned int	len;
 
-	i = 0;
-	j = ft_strlen(dst);
-	len = ft_strlen(src) + j;
-	if (dstsize < 1)
-		return (len);
-	while (src[i] != '\0')
+	len = 0;
+	while (dst[len] && len < dstsize)
+		len++;
+	i = len;
+	while (src[len - i] && len + 1 < dstsize)
 	{
-		dst[j] = src[i];
-		j++;
-		i++;
-		if (j == dstsize - 1)
-			break;
+			dst[len] = src[len - i];
+			len++;
 	}
-	dst[j] = '\0';
-	return (len);
+	if (i < dstsize)
+		dst[len] = '\0';
+	return (i + ft_strlen(src));
 }
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	unsigned int    len;
-	unsigned int    i;
+	unsigned int	len;
+	unsigned int	i;
 
-	while (src[len] != '\0')
+	len = 0;
+	while (src[len])
 		len++;
-	i = 0;
 	if (dstsize == 0)
 		return (len);
-	while (src[i] != '\0')
+	i = 0;
+	while (src[i] && i + 1 < dstsize)
 	{
 		dst[i] = src[i];
 		i++;
-		if (i == dstsize - 1)
-			break;
 	}
-	dst[i] = '\0';
+	if (i < dstsize)
+		dst[i] = '\0';
 	return (len);
 }
 

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_str1.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jlorber <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/15 12:10:48 by jlorber           #+#    #+#             */
+/*   Updated: 2022/03/15 14:59:37 by jlorber          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 char	*ft_strchr(const char *s, int c)
@@ -5,36 +17,28 @@ char	*ft_strchr(const char *s, int c)
 	int	i;
 
 	i = 0;
-	while (s[i] != '\0')
+	while (s[i] != c)
 	{
-		if (s[i] == c)
-			return ((char *)&s[i]);
+		if (s[i] == '\0')
+			return (NULL);
 		i++;
 	}
-	if (c == '\0')
-		return ((char *)&s[i]);
-	return (0);
+	return ((char *)&s[i]);
 }
 
 char	*ft_strrchr(const char *s, int c)
 {
 	int	i;
-	int	j;
-	
-	i = 0;
-	j= 0;
-	while (s[i] != '\0')
-	{
-		if (s[i] == c)
-			j = 0;
-		i++;
-		j++;
-	}
+
+	i = ft_strlen(s);
 	if (c == '\0')
 		return ((char *)&s[i]);
-	else if (i == j)
-		return (NULL);
-	return ((char *)&s[i - j]);
+	while (i--)
+	{
+		if (s[i] == c)
+			return ((char *)&s[i]);
+	}
+	return (NULL);
 }
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t n)
@@ -64,7 +68,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t n)
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	unsigned int    i;
+	unsigned int	i;
 
 	i = 0;
 	if (n == 0)

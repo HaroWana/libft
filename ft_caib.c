@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_caib.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jlorber <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/15 12:09:38 by jlorber           #+#    #+#             */
+/*   Updated: 2022/03/15 17:32:35 by jlorber          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h" 
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	unsigned int	i;
-	char		*new;
+	char			*new;
 
 	i = 0;
 	new = malloc(nmemb * size);
@@ -20,8 +32,8 @@ void	*ft_calloc(size_t nmemb, size_t size)
 int	ft_atoi(const char *nptr)
 {
 	int	i;
-        int	nb;
-        int	neg;
+	int	nb;
+	int	neg;
 
 	neg = 1;
 	i = 0;
@@ -64,13 +76,18 @@ int	ft_count_digits(int n)
 
 char	*ft_itoa(int n)
 {
-	int	len;
+	int		len;
 	char	*str;
 
 	if (n == -2147483648)
-		return ("-2147483648\0");
+	{
+		str = (char *)malloc(sizeof(char) * 12);
+		str = "-2147483648\0";
+		return (str);
+	}
 	len = ft_count_digits(n);
-	if(!(str = (char *)malloc(sizeof(char) * len + 2)))
+	str = (char *)malloc(sizeof(char) * len + 2);
+	if (!str)
 		return (0);
 	if (n == 0)
 		return ("0\0");
