@@ -6,7 +6,7 @@
 /*   By: jlorber <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 12:10:22 by jlorber           #+#    #+#             */
-/*   Updated: 2022/03/15 15:39:21 by jlorber          ###   ########.fr       */
+/*   Updated: 2022/03/22 17:06:43 by jlorber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	char			*s;
 	char			*d;
 
+	if (!dst && !src)
+		return (NULL);
 	s = (char *)src;
 	d = (char *)dst;
 	i = 0;
@@ -47,6 +49,8 @@ void	*ft_memmove(void *dst, const void *src, size_t n)
 	char			*s;
 	char			*d;
 
+	if (!dst && !src)
+		return (NULL);
 	s = (char *)src;
 	d = (char *)dst;
 	i = 0;
@@ -60,11 +64,8 @@ void	*ft_memmove(void *dst, const void *src, size_t n)
 	}
 	else
 	{
-		while (n > i)
-		{
-			d[n - 1] = s[n - 1];
-			n--;
-		}
+		while (n-- > i)
+			d[n] = s[n];
 	}
 	return (dst);
 }

@@ -6,7 +6,7 @@
 /*   By: jlorber <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 12:12:06 by jlorber           #+#    #+#             */
-/*   Updated: 2022/03/15 13:43:01 by jlorber          ###   ########.fr       */
+/*   Updated: 2022/03/22 13:47:24 by jlorber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 
-int		ft_strlen(const char *s);
+size_t	ft_strlen(const char *s);
 
 char	*ft_strjoin(char const *s1, char const *s2);
 

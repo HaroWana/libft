@@ -27,7 +27,7 @@ $(NAME): $(OBJS)
 all: $(NAME)
 
 bonus: $(BONUS_OBJS)
-	@$(AR) $(NAME) $@ $^
+	@$(AR) $(NAME) $^
 
 clean:
 	@rm -f $(OBJS) $(BONUS_OBJS)

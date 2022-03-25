@@ -6,7 +6,7 @@
 /*   By: jlorber <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 12:10:48 by jlorber           #+#    #+#             */
-/*   Updated: 2022/03/15 14:59:37 by jlorber          ###   ########.fr       */
+/*   Updated: 2022/03/22 15:41:03 by jlorber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ char	*ft_strchr(const char *s, int c)
 	int	i;
 
 	i = 0;
-	while (s[i] != c)
+	while (s[i] != (char)c)
 	{
 		if (s[i] == '\0')
 			return (NULL);
 		i++;
 	}
-	return ((char *)&s[i]);
+	return ((char *)(s + i));
 }
 
 char	*ft_strrchr(const char *s, int c)
@@ -31,11 +31,11 @@ char	*ft_strrchr(const char *s, int c)
 	int	i;
 
 	i = ft_strlen(s);
-	if (c == '\0')
+	if ((char)c == '\0')
 		return ((char *)&s[i]);
 	while (i--)
 	{
-		if (s[i] == c)
+		if (s[i] == (char)c)
 			return ((char *)&s[i]);
 	}
 	return (NULL);
@@ -46,21 +46,17 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t n)
 	unsigned int	i;
 	unsigned int	j;
 
-	i = 0;
-	j = 0;
-	if (needle == 0)
+	if (!needle[0])
 		return ((char *)haystack);
+	i = 0;
 	while (haystack[i] != '\0' && i < n)
 	{
-		while (haystack[i] == needle[j])
-		{
-			i++;
+		j = 0;
+		while (haystack[i + j] && needle[j]
+			&& haystack[i + j] == needle[j] && i + j < n)
 			j++;
-			if (needle[j] == '\0')
-				return ((char *)&haystack[i - j]);
-			if (haystack[i] != needle[j])
-				j = 0;
-		}
+		if (needle[j] == '\0')
+			return ((char *)&haystack[i]);
 		i++;
 	}
 	return (NULL);
@@ -82,17 +78,26 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char			*new;
 	unsigned int	i;
+	unsigned int	j;
 
-	i = 0;
-	new = (char *)malloc(sizeof(char) * len + 1);
-	if (!(new))
+	if (!s)
 		return (NULL);
-	while (len > i || s[start] != '\0')
+	if ((size_t)start > ft_strlen(s))
+		return (ft_strdup(""));
+	if (len >= ft_strlen(s + start))
+		new = (char *)malloc(sizeof(*s) * (ft_strlen(s + start) + 1));
+	else
+		new = (char *)malloc(sizeof(*s) * (len + 1));
+	if (!new)
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (s[i] != '\0')
 	{
-		new[i] = s[start];
-		start++;
+		if (i >= start && j < len)
+			new[j++] = s[i];
 		i++;
 	}
-	new[i] = '\0';
+	new[j] = '\0';
 	return (new);
 }
