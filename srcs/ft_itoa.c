@@ -1,4 +1,4 @@
-#include "libft.h" 
+#include "../libft.h" 
 
 static int	ft_count_digits(int n)
 {

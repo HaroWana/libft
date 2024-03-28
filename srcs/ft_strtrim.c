@@ -1,4 +1,4 @@
-#include "libft.h"
+#include "../libft.h"
 
 static int	ft_is_char_in_set(char c, char const *set)
 {
