@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlorber <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: jlorber <jlorber@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 12:12:06 by jlorber           #+#    #+#             */
-/*   Updated: 2022/03/22 13:47:24 by jlorber          ###   ########.fr       */
+/*   Updated: 2024/03/28 11:24:17 by jlorber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-typedef struct s_list
+typedef struct	s_list
 {
 	void			*content;
 	struct s_list	*next;
-}		t_list;
+}				t_list;
 
 int		ft_isalpha(int c);
 
