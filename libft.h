@@ -7,7 +7,7 @@
 
 typedef struct	s_list
 {
-	void			*content;
+	void	*content;
 	struct s_list	*next;
 }				t_list;
 
@@ -81,7 +81,7 @@ void	ft_putnbr_fd(int n, int fd);
 
 t_list	*ft_lstnew(void *content);
 
-t_list		*ft_lstlast(t_list *lst);
+t_list	*ft_lstlast(t_list *lst);
 
 void	ft_lstadd_back(t_list **list, t_list *new);
 
