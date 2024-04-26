@@ -23,7 +23,7 @@ In this project, you will find a collection of functions designed to mimic vario
 
 ## Usage
 
-To use this library, simply include the provided header file `libft.h` in your C code and link against the compiled library file `libft.a`.
+To use this library, simply include the provided header file `libft.h` in your C code and link against the compiled library file `libft.a` (Makefile provided).
 
 ## Functions
 
